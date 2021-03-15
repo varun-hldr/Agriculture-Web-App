@@ -46,7 +46,6 @@ passport.use(
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
       callbackURL: "/auth/google/redirect",
-      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       // check if user already exist in our db
@@ -74,7 +73,6 @@ passport.use(
       clientSecret: keys.facebook.clientSecret,
       callbackURL: "/auth/facebook/redirect",
       profileFields: ["id", "displayName", "email"],
-      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       // check if user already exist in our db
