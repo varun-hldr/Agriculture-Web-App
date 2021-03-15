@@ -8,7 +8,7 @@ class Routing extends Component {
   googleLogin = async () => {
     console.log("Before Calling APi");
     let data = await publicFetch
-      .get("/api/login/success", {
+      .get("/auth/login/success", {
         method: "GET",
         credentials: "include",
         withCredentials: true,

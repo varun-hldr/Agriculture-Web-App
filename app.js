@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: ["hjgjfg"],
+    keys: [keys.session.cookieKey],
   })
 );
 app.use(passport.initialize());
@@ -55,7 +55,8 @@ app.use(
   })
 );
 
-require("./routes/social-router")(app);
+// require("./routes/social-router")(app);
+require("./routes/auth-routes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
