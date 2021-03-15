@@ -22,7 +22,8 @@ class Routing extends Component {
     //   .catch(() => false);
 
     // return data;
-    let data = await axios.get("/auth/login/success").then((res) => res.data);
+    let data = await axios.get("/api/login/success").then((res) => res.data);
+    console.log(data);
     return data;
   };
   async componentDidMount() {
