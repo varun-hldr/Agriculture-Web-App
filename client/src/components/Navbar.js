@@ -1,16 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import * as USER from "./api/apiActions";
 import * as IMG from "./img";
 
 const Navbar = (props) => {
-  // const logout = async () => {
-  //   await USER.logout();
-  //   // if (success) {
-  //   //   props.dispatch({ type: "AUTH_LOGOUT" });
-  //   // }
-  // };
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
@@ -24,10 +17,6 @@ const Navbar = (props) => {
           </Link>
 
           {props.auth.isAuth ? (
-            //   <Link to="/" onClick={logout}>
-            //   <img src={IMG.profile} alt="cart" />
-
-            // </Link>
             <div className="dropdown">
               <Link
                 id="dropdownMenuButton1"

@@ -9,17 +9,26 @@ export async function login(user) {
   return data;
 }
 
+export async function socialLogin() {
+  let data = await publicFetch
+    .get("auth/login/success", {
+      method: "GET",
+      credentials: "include",
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
+    .then((response) => response.data)
+    .catch(() => false);
+  return data;
+}
+
 export async function googleLogin() {
   let data = await publicFetch
     .get("auth/google")
-    .then((response) => response.data)
-    .catch(() => false);
-
-  return data;
-}
-export async function logout() {
-  let data = await publicFetch
-    .get("auth/logout")
     .then((response) => response.data)
     .catch(() => false);
 

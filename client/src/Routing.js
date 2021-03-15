@@ -1,31 +1,30 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { publicFetch } from "./components/api/fetch";
+// import { publicFetch } from "./components/api/fetch";
 import * as Layout from "./components";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as API from "./components/api/apiActions";
 
 class Routing extends Component {
-  googleLogin = async () => {
-    console.log("Before Calling APi");
-    let data = await publicFetch
-      .get("/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        withCredentials: true,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-      .then((response) => response.data)
-      .catch(() => false);
-    console.log("After");
-    console.log(data);
-    return data;
-  };
+  // googleLogin = async () => {
+  //   let data = await publicFetch
+  //     .get("/auth/login/success", {
+  //       method: "GET",
+  //       credentials: "include",
+  //       withCredentials: true,
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Credentials": true,
+  //       },
+  //     })
+  //     .then((response) => response.data)
+  //     .catch(() => false);
+  //   return data;
+  // };
   async componentDidMount() {
-    const { token, user, success } = await this.googleLogin();
+    const { token, user, success } = await API.googleLogin();
+    // const { token, user, success } = await this.googleLogin();
     if (success) {
       this.props.dispatch({
         type: "AUTH_LOGIN",

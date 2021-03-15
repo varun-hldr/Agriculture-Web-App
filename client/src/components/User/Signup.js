@@ -47,55 +47,6 @@ export default class Signup extends Component {
           <div className="col-6 login-col hide-div"></div>
           <div className="col-6 login-col">
             <form className="login-form">
-              {/* <form className="login-form">
-                <h2 className="text-center">Looks like you're new here!</h2>
-                <span className="badge bg-dark mt-4">{this.state.text}</span>
-                <div className="form-group">
-                  <label>Name:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter your full name"
-                    name="username"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Email:</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Enter email"
-                    name="email"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Password:</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="pwd"
-                    placeholder="Enter password"
-                    name="password"
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div>
-                  <label>
-                    Existing User <Link to="/login">Login</Link>
-                  </label>
-                </div>
-                <button
-                  onClick={this.register}
-                  type="button"
-                  className="btn btn-dark mt-3"
-                >
-                  Signup
-                </button>
-              </form> */}
-              {/* Login */}
               <img className="logo" src={icon.logo} alt="logo" />
 
               <h1>Create an account</h1>
