@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 class Routing extends Component {
   googleLogin = async () => {
+    console.log("Before Calling APi");
     let data = await publicFetch
       .get("/api/login/success", {
         method: "GET",
@@ -20,6 +21,7 @@ class Routing extends Component {
       .then((response) => response.data)
       .catch(() => false);
 
+    console.log("After Calling APi");
     return data;
   };
   async componentDidMount() {

@@ -14,16 +14,18 @@ module.exports = (router) => {
   // when login is successful, retrieve user info
   router.get("/api/login/success", (req, res) => {
     console.log("backend success");
-    if (req.user) {
-      //   Create and assign a token
-      const token = jwt.sign({ user: req.user }, keys.token.TOKEN_SECRET);
-      const user = {
-        token: token,
-        user: req.user,
-        success: true,
-      };
-      res.send(user);
-    }
+    // if (req.user) {
+    //   //   Create and assign a token
+    //   const token = jwt.sign({ user: req.user }, keys.token.TOKEN_SECRET);
+    //   const user = {
+    //     token: token,
+    //     user: req.user,
+    //     success: true,
+    //   };
+    //   res.send(user);
+    // }
+
+    res.send({ user: req.user, success: true, token: "54444445" });
   });
 
   // when login failed, send failed msg
