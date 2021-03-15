@@ -6,9 +6,11 @@ import * as IMG from "./img";
 
 const Navbar = (props) => {
   const logout = async () => {
+    console.log("1");
     const { success } = await USER.logout();
     if (success) {
       props.dispatch({ type: "AUTH_LOGOUT" });
+      console.log("2");
     }
   };
   return (
@@ -51,13 +53,9 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item logout"
-                    to="/"
-                    onClick={logout}
-                  >
+                  <a className="dropdown-item logout" href="/" onClick={logout}>
                     Logout
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
