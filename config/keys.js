@@ -17,7 +17,7 @@ module.exports = {
   session: {
     cookieKey: "mycookiekey",
   },
-  CLIENT_HOME_PAGE_URL: "https://agribazzar.herokuapp.com/",
+  CLIENT_HOME_PAGE_URL: "/",
   callbackURL: { URL: "https://agribazzar-api.herokuapp.com/" },
   token: { TOKEN_SECRET: "bvhghvg86" },
 };

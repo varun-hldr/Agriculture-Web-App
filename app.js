@@ -8,10 +8,13 @@ const cors = require("cors");
 const keys = require("./config/keys");
 
 // Routers
-const authRouter = require("./routes/auth-routes");
+// const authRouter = require("./routes/auth-routes");
 const userRouter = require("./routes/user-routes");
 
 const app = express();
+
+// Passport Setup
+require("./config/passport-setup");
 
 // connect to mongodb
 mongoose.connect(
@@ -52,6 +55,8 @@ app.use(
   })
 );
 
+require("./routes/social-router")(app);
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   const path = require("path");
@@ -60,16 +65,13 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.get("/", (req, res) => {
-  res.send("Health Ok");
-});
+// app.get("/", (req, res) => {
+//   res.send("Health Ok");
+// });
 
 // Set up routes
-app.use("/auth", authRouter);
+// app.use("/auth", authRouter);
 app.use("/users", userRouter);
-
-// Passport Setup
-require("./config/passport-setup");
 
 const port = process.env.PORT || 3100;
 app.listen(port, () => console.log("Server is running on " + port));

@@ -6,5 +6,5 @@ const target = "https://agribazzar.herokuapp.com/";
 module.exports = function (app) {
   app.use(proxy("/auth/google", { target: target }));
   app.use(proxy("/auth/facebook", { target: target }));
-  //   app.use(proxy("/api/*", { target: "http://localhost:3100/" }));
+  app.use(proxy("/api/*", { target: target }));
 };
