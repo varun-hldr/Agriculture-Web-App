@@ -51,7 +51,11 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item logout" onClick={logout}>
+                  <a
+                    type="button"
+                    className="dropdown-item logout"
+                    onClick={logout}
+                  >
                     Logout
                   </a>
                 </li>

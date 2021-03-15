@@ -16,7 +16,6 @@ module.exports = (router) => {
 
   // when login is successful, retrieve user info
   router.get("/auth/login/success", (req, res) => {
-    console.log(req.user);
     if (req.user) {
       //   Create and assign a token
       const token = jwt.sign({ user: req.user }, keys.token.TOKEN_SECRET);
@@ -26,6 +25,8 @@ module.exports = (router) => {
         success: true,
       };
       res.send(user);
+    } else {
+      res.send({ success: false });
     }
   });
 
