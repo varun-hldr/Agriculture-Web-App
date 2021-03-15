@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
-// const cookieSession = require("cookie-session");
+const cookieSession = require("cookie-session");
 const cors = require("cors");
 const keys = require("./config/keys");
 
@@ -28,21 +28,21 @@ mongoose.connect(
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  expressSession({
-    secret: keys.session.cookieKey,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 },
-  })
-);
-
 // app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: ["hjgjfg"],
+//   expressSession({
+//     secret: keys.session.cookieKey,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 1000 },
 //   })
 // );
+
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: ["hjgjfg"],
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
