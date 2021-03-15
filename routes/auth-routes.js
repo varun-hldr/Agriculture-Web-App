@@ -1,9 +1,6 @@
-const router = require("express").Router();
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
-
-// const CLIENT_HOME_PAGE_URL = "http://localhost:3000";
 
 // Validate User Functions
 const { loginValidation, registerValidation } = require("../validation");
@@ -40,9 +37,6 @@ module.exports = (router) => {
   // When logout, redirect to client
   router.get("/auth/logout", (req, res) => {
     req.logout();
-    // res.json({
-    //   success: true,
-    // });
     res.redirect("/");
   });
 
@@ -82,9 +76,7 @@ module.exports = (router) => {
     "/auth/facebook/redirect",
     passport.authenticate("facebook", {
       successRedirect: keys.CLIENT_HOME_PAGE_URL,
-      failureRedirect: "/auth/login/failed",
+      failureRedirect: "/",
     })
   );
 };
-
-// module.exports = router;

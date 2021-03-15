@@ -1,17 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const bodyParser = require("body-parser");
-const expressSession = require("express-session");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
 const keys = require("./config/keys");
+const app = express();
 
 // Routers
-// const authRouter = require("./routes/auth-routes");
 const userRouter = require("./routes/user-routes");
-
-const app = express();
 
 // Passport Setup
 require("./config/passport-setup");
@@ -28,15 +24,6 @@ mongoose.connect(
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(
-//   expressSession({
-//     secret: keys.session.cookieKey,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { maxAge: 1000 },
-//   })
-// );
-
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -55,7 +42,8 @@ app.use(
   })
 );
 
-// require("./routes/social-router")(app);
+// Set up routes
+app.use("/users", userRouter);
 require("./routes/auth-routes")(app);
 
 if (process.env.NODE_ENV === "production") {
@@ -65,14 +53,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
-// app.get("/", (req, res) => {
-//   res.send("Health Ok");
-// });
-
-// Set up routes
-// app.use("/auth", authRouter);
-app.use("/users", userRouter);
 
 const port = process.env.PORT || 3100;
 app.listen(port, () => console.log("Server is running on " + port));
