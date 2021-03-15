@@ -46,10 +46,28 @@ app.use(
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
   const path = require("path");
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  // });
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    if (
+      req.params[0] === "/auth/google" ||
+      req.params[0] === "/auth/facebook"
+    ) {
+      console.log("hello");
+    } else {
+      res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    }
   });
 }
+
+// app.get("*", (req, res) => {
+//   if (req.params[0] === "/auth/google" || req.params[0] === "/auth/facebook") {
+//     console.log("hello");
+//   } else {
+//     console.log("Not");
+//   }
+// });
 
 // app.get("/", (req, res) => {
 //   res.send("Health Ok");
