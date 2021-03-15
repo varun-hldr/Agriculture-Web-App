@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
+// const cookieSession = require("cookie-session");
 const cors = require("cors");
 const keys = require("./config/keys");
 
@@ -32,12 +33,20 @@ app.use(
     cookie: { maxAge: 1000 },
   })
 );
+
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: ["hjgjfg"],
+//   })
+// );
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    // origin: "http://localhost:3000", // allow to server to accept request from different origin
+    origin: "https://agribazzar.herokuapp.com", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
   })

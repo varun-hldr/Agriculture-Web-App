@@ -87,7 +87,7 @@ class Login extends Component {
                   <h6>Or</h6>
                 </div>
 
-                <a href="http://localhost:3100/auth/google">
+                <a href="/auth/google">
                   <img
                     src={icon.google}
                     className="img-thumbnail"

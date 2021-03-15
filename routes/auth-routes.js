@@ -15,6 +15,7 @@ router.post("/register", registerValidation, async (req, res) => {
 
 // when login is successful, retrieve user info
 router.get("/login/success", (req, res) => {
+  console.log(req.user);
   if (req.user) {
     //   Create and assign a token
     const token = jwt.sign({ user: req.user }, keys.token.TOKEN_SECRET);
