@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 class Routing extends Component {
   googleLogin = async () => {
     let data = await publicFetch
-      .get("auth/login/success", {
+      .get("http://localhost:3100/auth/login/success", {
         method: "GET",
         credentials: "include",
         withCredentials: true,
