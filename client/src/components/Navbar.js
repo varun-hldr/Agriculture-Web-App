@@ -5,12 +5,12 @@ import * as USER from "./api/apiActions";
 import * as IMG from "./img";
 
 const Navbar = (props) => {
-  const logout = async () => {
-    await USER.logout();
-    // if (success) {
-    //   props.dispatch({ type: "AUTH_LOGOUT" });
-    // }
-  };
+  // const logout = async () => {
+  //   await USER.logout();
+  //   // if (success) {
+  //   //   props.dispatch({ type: "AUTH_LOGOUT" });
+  //   // }
+  // };
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="container-fluid">
@@ -51,11 +51,7 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    type="button"
-                    className="dropdown-item logout"
-                    onClick={logout}
-                  >
+                  <a className="dropdown-item logout" href="/auth/logout">
                     Logout
                   </a>
                 </li>
