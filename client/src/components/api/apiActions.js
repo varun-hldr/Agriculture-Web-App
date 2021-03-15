@@ -9,7 +9,7 @@ export async function login(user) {
   return data;
 }
 
-export async function socialLogin() {
+export async function checkLogin() {
   let data = await publicFetch
     .get("auth/login/success", {
       method: "GET",

@@ -23,7 +23,7 @@ class Routing extends Component {
   //   return data;
   // };
   async componentDidMount() {
-    const { token, user, success } = await API.googleLogin();
+    const { token, user, success } = await API.checkLogin();
     // const { token, user, success } = await this.googleLogin();
     if (success) {
       this.props.dispatch({
