@@ -20,8 +20,8 @@ class Routing extends Component {
       })
       .then((response) => response.data)
       .catch(() => false);
-
-    console.log("After Calling APi");
+    console.log("After");
+    console.log(data);
     return data;
   };
   async componentDidMount() {
