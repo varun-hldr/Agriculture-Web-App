@@ -1,0 +1,252 @@
+// Hero Sec
+.main .home .hero-sec {
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+  padding: 30px;
+}
+
+@media (max-width: 67.5rem) {
+  .main .home .hero-sec {
+    width: 100%;
+    height: 500px;
+  }
+  .main .home .home-top .hero-cards {
+    width: 100% !important;
+    padding-left: 20px !important;
+  }
+  .main .home .home-top .hero-cards .card {
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 48rem) {
+  .main .home .hero-sec {
+    width: 100%;
+    height: 400px;
+  }
+  .main .home .home-top .hero-cards {
+    width: 100% !important;
+    padding-left: 20px !important;
+  }
+
+  .main .home .hero-sec .hero-box {
+    .hero-text h1 {
+      font-size: 22px;
+    }
+  }
+  .main .home .home-top .hero-cards .card {
+    margin-right: 20px !important;
+  }
+}
+
+.main .home .hero-sec .hero-box {
+  width: 70%;
+  margin: auto;
+  .hero-text {
+    margin-top: 11%;
+    margin-bottom: 12%;
+  }
+  .hero-text h1 {
+    font-family: $bold;
+    margin-bottom: 0px;
+  }
+  .hero-text p {
+    margin: 0px;
+    color: $lightTextColot;
+  }
+  .hero-search {
+    background: $navColor;
+    padding: 6px;
+    width: 100%;
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .hero-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+    margin-left: 20px;
+  }
+  .hero-search button {
+    width: 100px;
+    background: $primaryColor;
+    border: none;
+    outline: none;
+    color: $navColor;
+    padding: 8px;
+    border-radius: 3px;
+    margin-left: 5px;
+  }
+  .hero-search img {
+    width: 20px;
+  }
+}
+
+// Home Top
+
+.main .home .home-top .hero-cards {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  margin-bottom: 20px;
+
+  .card {
+    text-align: center;
+    font-family: $medium;
+    padding: 20px;
+    min-width: 13rem;
+    margin: auto;
+    max-width: 14px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 2px 3px #00000048;
+  }
+
+  .card p {
+    margin: 0px;
+    font-size: 17px;
+    font-family: $bold;
+  }
+
+  .card span {
+    font-size: 13px;
+    color: $lightTextColot;
+  }
+
+  .card img {
+    border-radius: 50%;
+    margin-top: 20px;
+  }
+}
+
+.outer-border {
+  background: $navColor;
+  height: 400px;
+}
+.inner-border {
+  position: relative;
+  top: -100px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.inner-border::-webkit-scrollbar {
+  display: none;
+}
+
+// Home bottom
+
+@media (max-width: 48rem) {
+  .main .home .home-bottom {
+    padding: 30px !important;
+
+    .row {
+      margin-bottom: 150px;
+    }
+  }
+}
+@media (max-width: 87.5rem) {
+  .main .home .home-bottom {
+    .row .myCol {
+      width: 100% !important;
+    }
+  }
+}
+
+.main .home .home-bottom {
+  padding: 13%;
+  background: $backgroundColor;
+
+  .row .myCol {
+    height: 400px;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .row .card-box .announcement-card {
+    height: 350px;
+    width: 100%;
+    box-shadow: 0px 2px 8px #00000062;
+    background-position: center;
+    background-size: cover;
+    padding: 20px 30px;
+    font-family: $regular;
+    border-radius: 5px;
+
+    .card-heading {
+      color: $lightTextColot;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 35px;
+      margin-top: 30px;
+      font-family: $bold;
+    }
+
+    .card-bottom {
+      margin-top: 180px;
+      p {
+        line-height: 8px;
+        color: $lightTextColot;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .row .latest-text {
+    h1 {
+      font-family: $bold;
+      font-size: 50px;
+      margin-bottom: 10px;
+      line-height: 50px;
+    }
+    p {
+      color: $lightTextColot;
+      font-size: 20px;
+    }
+  }
+
+  .row .latest-arrow {
+    margin-top: 60px;
+    img {
+      width: 40px;
+    }
+    .left,
+    .right {
+      background: $navColor;
+      border-radius: 50%;
+      margin: 15px;
+      margin-left: 0px;
+      padding: 5px;
+      box-shadow: 0px 1px 4px #00000048;
+    }
+  }
+  .row .show-all button {
+    width: 220px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: $primaryColor2;
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .row .card-box .card-pagination {
+    height: 20px;
+    width: 100%;
+  }
+  .row .card-box .card-pagination button {
+    border: none;
+    outline: none;
+    font-size: 60px;
+    line-height: 40px;
+    background: transparent;
+    color: $lightTextColot;
+    width: 30px;
+  }
+}
