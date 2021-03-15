@@ -3,27 +3,23 @@ import { publicFetch } from "./components/api/fetch";
 import * as Layout from "./components";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 
 class Routing extends Component {
   googleLogin = async () => {
-    // let data = await publicFetch
-    //   .get("auth/login/success", {
-    //     method: "GET",
-    //     credentials: "include",
-    //     withCredentials: true,
-    //     headers: {
-    //       Accept: "application/json",
-    //       "Content-Type": "application/json",
-    //       "Access-Control-Allow-Credentials": true,
-    //     },
-    //   })
-    //   .then((response) => response.data)
-    //   .catch(() => false);
+    let data = await publicFetch
+      .get("/api/login/success", {
+        method: "GET",
+        credentials: "include",
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+      .then((response) => response.data)
+      .catch(() => false);
 
-    // return data;
-    let data = await axios.get("/api/login/success").then((res) => res.data);
-    console.log(data);
     return data;
   };
   async componentDidMount() {
