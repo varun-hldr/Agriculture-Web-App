@@ -6,11 +6,9 @@ import * as IMG from "./img";
 
 const Navbar = (props) => {
   const logout = async () => {
-    console.log("1");
     const { success } = await USER.logout();
     if (success) {
       props.dispatch({ type: "AUTH_LOGOUT" });
-      console.log("2");
     }
   };
   return (
