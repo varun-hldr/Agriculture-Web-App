@@ -1,0 +1,67 @@
+[
+  {
+    "productImage": [
+      "https://www.tractorjunction.com/assets/images/items/Sell-animal-product-1614926339-0.jpeg",
+      "https://www.tractorjunction.com/assets/images/items/Sell-animal-product-1614926340-2.jpeg"
+    ],
+    "productName": "2 lit, 1 infantile, 15000",
+    "productPrice": "15,000",
+    "productRating": "",
+    "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "productCategory": "Live Stock",
+    "productInStock": true,
+    "totalItem": 10,
+    "dateOfListing": { "day": "17", "month": "03", "year": "2021" },
+    "userId": "54376893032467",
+    "userName": "Gyanwati"
+  },
+  {
+    "productImage": [
+      "https://krushikendra.com/image/cache/catalog/Products_New/bengal_gram-800x800.jpg",
+      "https://krushikendra.com/image/cache/catalog/Products_New/bengal-gram-seeds-800x800.jpg"
+    ],
+    "productName": "Bengal Gram (Chana) - Seeds VIJAY",
+    "productPrice": "1,250",
+    "productRating": "5",
+    "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "productCategory": "Crops",
+    "productInStock": true,
+    "totalItem": 10,
+    "dateOfListing": { "day": "17", "month": "March", "year": "2021" },
+    "userId": "54376893032467",
+    "userName": "Gyanwati"
+  },
+  {
+    "productImage": [
+      "https://i.imgur.com/vBi7Z5j.jpg",
+      "https://i.imgur.com/ETUTDk4.jpg",
+      "https://i.imgur.com/fHlXjni.jpg"
+    ],
+    "productName": "Mahindra Jivo 245 DI 4WD, 24 hp Tractor, 750 kg",
+    "productPrice": "3.2 Lakhs",
+    "productRating": "5",
+    "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "productCategory": "Farm Eqipment",
+    "productInStock": true,
+    "totalItem": 10,
+    "dateOfListing": { "day": "17", "month": "March", "year": "2021" },
+    "userId": "54376893032467",
+    "userName": "Gyanwati"
+  },
+  {
+    "productImage": [
+      "https://images-na.ssl-images-amazon.com/images/I/51sYCYKNpFL._SX389_BO1,204,203,200_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/I/51sYCYKNpFL._SX389_BO1,204,203,200_.jpg"
+    ],
+    "productName": "Objective Agriculture (20th Edition)",
+    "productPrice": "396.00",
+    "productRating": "5",
+    "productDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "productCategory": "Books",
+    "productInStock": true,
+    "totalItem": 10,
+    "dateOfListing": { "day": "17", "month": "March", "year": "2021" },
+    "userId": "54376893032467",
+    "userName": "Gyanwati"
+  }
+]
