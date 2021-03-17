@@ -40,6 +40,16 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
+                  <Link className="dropdown-item" to="/dashboard">
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/add-product">
+                    Add Product
+                  </Link>
+                </li>
+                <li>
                   <a className="dropdown-item logout" href="/auth/logout">
                     Logout
                   </a>

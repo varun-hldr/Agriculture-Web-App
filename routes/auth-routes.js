@@ -37,7 +37,7 @@ module.exports = (router) => {
   // When logout, redirect to client
   router.get("/auth/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect(keys.CLIENT_HOME_PAGE_URL);
   });
 
   // Auth Login with Passport Local
@@ -76,7 +76,7 @@ module.exports = (router) => {
     "/auth/facebook/redirect",
     passport.authenticate("facebook", {
       successRedirect: keys.CLIENT_HOME_PAGE_URL,
-      failureRedirect: "/",
+      failureRedirect: keys.CLIENT_HOME_PAGE_URL,
     })
   );
 };

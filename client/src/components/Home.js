@@ -5,14 +5,14 @@ import * as IMG from "./img";
 export default class Home extends Component {
   productCard = (title, items, image) => {
     return (
-      <div class="card">
+      <Link to={`/market/${title}`} class="card" type="button">
         <div class="card-body">
           <p>{title}</p>
 
           <span>{items}</span>
         </div>
         <img src={image} class="card-img-bottom" alt={title} />
-      </div>
+      </Link>
     );
   };
   render() {

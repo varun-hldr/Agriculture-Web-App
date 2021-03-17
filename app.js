@@ -8,6 +8,7 @@ const app = express();
 
 // Routers
 const userRouter = require("./routes/user-routes");
+const productRouter = require("./routes/product-routes");
 
 // Passport Setup
 require("./config/passport-setup");
@@ -44,6 +45,7 @@ app.use(
 
 // Set up routes
 app.use("/users", userRouter);
+app.use("/product", productRouter);
 require("./routes/auth-routes")(app);
 
 if (process.env.NODE_ENV === "production") {
