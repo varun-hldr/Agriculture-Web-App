@@ -69,7 +69,7 @@ class AddProduct extends Component {
         productCategory: "Live Stock",
         productInStock: true,
         totalItem: 1,
-        dateOfListing: {},
+        dateOfListing: this.getDateHandler(),
         userId: this.props.auth.user._id,
         userName: this.props.auth.user.username,
       },
