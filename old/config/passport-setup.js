@@ -56,8 +56,8 @@ passport.use(
         username: profile.displayName,
         email: profile._json.email,
         googleId: profile.id,
-        role: "Admin",
-        status: "Active",
+        role: "User",
+        status: "Pending",
       }).save();
 
       return done(null, newUser);
@@ -83,8 +83,8 @@ passport.use(
         username: profile._json.name,
         email: profile._json.email,
         facebookId: profile.id,
-        role: "Admin",
-        status: "Active",
+        role: "User",
+        status: "Pending",
       }).save();
 
       return done(null, newUser);

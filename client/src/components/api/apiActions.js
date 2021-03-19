@@ -104,3 +104,48 @@ export async function addProduct(product) {
 
   return data;
 }
+
+export async function getProductById(id) {
+  let data = await publicFetch
+    .get(`product/${id}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+
+export async function getProductByCategory(category) {
+  let data = await publicFetch
+    .get(`product/cat/${category}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+
+// Shopping Cart
+export async function addProductOnCart(product) {
+  let data = await publicFetch
+    .post(`cart/add/${product.cartId}`, product)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+
+export async function findCartByID(id) {
+  let data = await publicFetch
+    .get(`cart/${id}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+export async function deleteProductFromCart(id) {
+  let data = await publicFetch
+    .delete(`cart/${id}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}

@@ -59,8 +59,13 @@ const Navbar = (props) => {
           ) : (
             <Link to="/login">Log In</Link>
           )}
-          <Link to="/">
+          <Link to="/cart" className="cart">
             <img src={IMG.cart} alt="cart" />
+            {props.user.cart.length !== 0 ? (
+              <span class="badge mybadge rounded-pill bg-success">
+                {props.user.cart.length}
+              </span>
+            ) : null}
           </Link>
         </form>
       </div>

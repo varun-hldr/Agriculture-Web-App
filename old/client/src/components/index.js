@@ -6,3 +6,7 @@ export { default as adminDashboard } from "./Dashboard/adminDashboard";
 export { default as AddUser } from "./AddUser";
 export { default as Login } from "./User/Login";
 export { default as Signup } from "./User/Signup";
+
+// Marketplace
+export { default as Market } from "./Marketplace/Market";
+export { default as AddProduct } from "./Marketplace/AddProduct";

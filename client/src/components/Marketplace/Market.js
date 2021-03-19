@@ -1,36 +1,22 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import * as API from "../api/apiActions";
 
 export default class Market extends Component {
   state = {
-    product: {
-      productImage: [
-        "https://i.imgur.com/vBi7Z5j.jpg",
-        "https://i.imgur.com/ETUTDk4.jpg",
-        "https://i.imgur.com/fHlXjni.jpg",
-      ],
-      productName: "Mahindra Jivo 245 DI 4WD, 24 hp Tractor, 750 kg",
-      productPrice: "3.2 Lakhs",
-      productRating: 5,
-      productDescription:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      productCategory: "Farm Equipment",
-      productInStock: true,
-      totalItem: 7,
-      dateOfListing: { day: "15", month: "Aug", year: "2020" },
-      userId: "76578648565",
-      userName: "Varun",
-    },
+    products: [],
+    isLoaded: false,
   };
+  async componentDidMount() {
+    const products = await API.getProductByCategory(
+      this.props.match.params.name
+    );
+    if (products) {
+      this.setState({ products, isLoaded: true });
+    }
+  }
+
   render() {
-    const data = [
-      this.state.product,
-      this.state.product,
-      this.state.product,
-      this.state.product,
-      this.state.product,
-      this.state.product,
-    ];
     return (
       <div className="market">
         <div className="market-top">
@@ -40,15 +26,22 @@ export default class Market extends Component {
             </div>
             <div className="total-products">
               <p>
-                Total in Farm Eqipment <span>12,400</span>
+                Total in {this.props.match.params.name}{" "}
+                <span>{this.state.products.length}</span>
               </p>
             </div>
           </div>
         </div>
         <div className="market-body">
-          <div className="products d-flex d-flex justify-content-evenly flex-wrap">
-            {data.map((product) => this.makeProductCard(product))}
-          </div>
+          {this.state.isLoaded ? (
+            <div className="products d-flex d-flex justify-content-evenly flex-wrap">
+              {this.state.products.map((product) =>
+                this.makeProductCard(product)
+              )}
+            </div>
+          ) : (
+            "Loading..."
+          )}
         </div>
       </div>
     );
@@ -66,10 +59,11 @@ export default class Market extends Component {
       dateOfListing,
       userId,
       userName,
+      _id,
     } = productData;
     return (
-      <div class="card">
-        <img src={productImage[2]} class="card-img-top" alt="..." />
+      <Link to={`/product/${_id}`} class="card">
+        <img src={productImage[0]} class="card-img-top" alt="..." />
         <div class="card-body">
           <div className="card-body-top d-flex justify-content-between">
             <div className="date">
@@ -84,10 +78,10 @@ export default class Market extends Component {
           <p className="price">Rs.{productPrice}</p>
           <p className="name">{productName}</p>
           <div className="buy">
-            <Link>Fast Buy</Link>
+            <Link to={`/product/${_id}`}>Fast Buy</Link>
           </div>
         </div>
-      </div>
+      </Link>
     );
   };
 }

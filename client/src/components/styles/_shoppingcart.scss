@@ -1,0 +1,112 @@
+.main .shopping-cart {
+  margin: auto;
+  max-width: 800px;
+  padding: 30px 5% 80px;
+  .cart-body {
+    margin-bottom: 50px;
+    .cart-product {
+      background: white;
+      box-shadow: 0px 2px 4px #00000038;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 0px 5px;
+      display: flex;
+      justify-content: space-between;
+      height: 70px;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        margin: auto 0;
+        margin-right: 5px;
+      }
+      p {
+        width: 300px;
+        min-width: 150px;
+        margin: auto 0;
+        font-family: $medium;
+        font-size: 16px;
+      }
+      .set-item {
+        display: flex;
+        justify-content: space-around;
+        min-width: 90px;
+        margin: auto 0;
+        margin-right: 7px;
+        button {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          border: none;
+          outline: none;
+          background: $primaryColor2;
+          color: white;
+        }
+        span {
+          font-family: $medium;
+          font-size: 17px;
+          margin: 0px 5px;
+        }
+      }
+      .product-price {
+        min-width: 100px;
+
+        h1 {
+          font-size: 20px;
+          font-family: $medium;
+          position: relative;
+          top: -2px;
+        }
+        button {
+          background: $backgroundColor;
+          color: black;
+          font-family: $bold;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          border: none;
+          outline: none;
+          font-size: 12px;
+          position: relative;
+          left: 90px;
+          top: -10px;
+          &:hover {
+            background: red;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .cart-footer {
+    display: flex;
+    justify-content: flex-end;
+    .product-total {
+      height: 40px;
+      display: flex;
+      .total-price {
+        margin-right: 25px;
+        p {
+          line-height: 15px;
+          color: $lightTextColot;
+        }
+        h1 {
+          line-height: 0px;
+          font-size: 26px;
+          font-family: $bold;
+        }
+      }
+      button {
+        width: 150px;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        background: $primaryColor2;
+        color: white;
+      }
+    }
+  }
+}

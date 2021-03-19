@@ -50,7 +50,9 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       // check if user already exist in our db
       const oldUser = await Users.findOne({ googleId: profile.id });
-      if (oldUser) return done(null, oldUser);
+      if (oldUser) {
+        return done(null, oldUser);
+      }
 
       const newUser = await new Users({
         username: profile.displayName,
@@ -59,7 +61,6 @@ passport.use(
         role: "User",
         status: "Pending",
       }).save();
-
       return done(null, newUser);
     }
   )
@@ -77,7 +78,10 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       // check if user already exist in our db
       const oldUser = await Users.findOne({ facebookId: profile.id });
-      if (oldUser) return done(null, oldUser);
+
+      if (oldUser) {
+        return done(null, oldUser);
+      }
 
       const newUser = await new Users({
         username: profile._json.name,

@@ -55,7 +55,7 @@ const registerValidation = async (req, res, next) => {
     email: req.body.email,
     password: hashpwd,
     role: req.body.role ? req.body.role : "User",
-    status: req.body.status ? req.body.status : "Active",
+    status: req.body.status ? req.body.status : "Pending",
   });
   try {
     req.user = await user.save();

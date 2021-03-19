@@ -94,3 +94,13 @@ export async function deleteUser({ id, token }) {
 
   return data;
 }
+
+// Product Api Calls
+export async function addProduct(product) {
+  let data = await publicFetch
+    .post("product/add", product)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
