@@ -11,6 +11,12 @@ class Login extends Component {
     text: "Login to manage your account",
   };
 
+  viewCart = async (id) => {
+    const cart = await USER.findCartByID(id.substring(0, 10));
+    if (cart.length !== 0)
+      this.props.dispatch({ type: "CART", payload: { cart } });
+  };
+
   login = async () => {
     const { token, user, message } = await USER.login(this.state.user);
     if (user) {
@@ -18,6 +24,7 @@ class Login extends Component {
         type: "AUTH_LOGIN",
         payload: { token, user },
       });
+      await this.viewCart(user._id);
     } else {
       this.setState({
         text: message,

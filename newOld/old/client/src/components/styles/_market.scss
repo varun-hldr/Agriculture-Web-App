@@ -31,6 +31,9 @@
   .main .market .market-body .products .card {
     width: 100% !important;
     max-width: 20rem;
+    img {
+      max-height: 200px !important;
+    }
   }
 
   .main .market .market-top {
@@ -42,17 +45,13 @@
       }
     }
   }
-
-  img {
-    max-height: 200px !important;
-  }
 }
 
 .main .market .market-body .products {
   .card {
     width: 17rem;
-    // max-width: 18rem;
-    // min-width: 14rem;
+    text-decoration: none;
+    color: $darkTextColor;
     text-align: center;
     border-radius: 5px;
     overflow: hidden;

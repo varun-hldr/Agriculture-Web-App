@@ -5,14 +5,32 @@ import { connect } from "react-redux";
 import * as API from "./components/api/apiActions";
 
 class Routing extends Component {
+  viewCart = async (id) => {
+    if (this.props.auth.isAuth) {
+      const cart = await API.findCartByID(id.substring(0, 10));
+      if (cart.length !== 0)
+        this.props.dispatch({ type: "CART", payload: { cart } });
+    }
+  };
   async componentDidMount() {
     const { token, user, success } = await API.checkLogin();
     if (success) {
-      this.props.dispatch({
+      await this.props.dispatch({
         type: "AUTH_LOGIN",
         payload: { token, user },
       });
+      await this.viewCart(user._id);
     }
+
+    // this.setState({
+    //   check,
+    // });
+    // if (this.props.auth.isAuth) {
+    //   const cart = await API.findCartByID(
+    //     this.props.auth.user._id.substring(0, 10)
+    //   );
+    //   if (cart) this.props.dispatch({ type: "CART", payload: { cart } });
+    // }
   }
   render() {
     return (
@@ -35,6 +53,8 @@ class Routing extends Component {
 
             <Route path="/market/:name" component={Layout.Market} />
             <Route path="/add-product" component={Layout.AddProduct} />
+            <Route path="/product/:name" component={Layout.ProductPage} />
+            <Route path="/cart" component={Layout.Cart} />
           </Switch>
         </Router>
         <Layout.Footer />

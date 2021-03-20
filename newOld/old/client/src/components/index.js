@@ -10,3 +10,5 @@ export { default as Signup } from "./User/Signup";
 // Marketplace
 export { default as Market } from "./Marketplace/Market";
 export { default as AddProduct } from "./Marketplace/AddProduct";
+export { default as ProductPage } from "./Marketplace/ProductPage";
+export { default as Cart } from "./Marketplace/Cart";

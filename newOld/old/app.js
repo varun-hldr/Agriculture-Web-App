@@ -9,6 +9,7 @@ const app = express();
 // Routers
 const userRouter = require("./routes/user-routes");
 const productRouter = require("./routes/product-routes");
+const shoppingCartRouter = require("./routes/shoppingcart-routes");
 
 // Passport Setup
 require("./config/passport-setup");
@@ -36,7 +37,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    // origin: "http://localhost:3000", // allow to server to accept request from different origin
+    //origin: "http://localhost:3000", // allow to server to accept request from different origin
     origin: "https://agribazzar.herokuapp.com", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // allow session cookie from browser to pass through
@@ -46,6 +47,7 @@ app.use(
 // Set up routes
 app.use("/users", userRouter);
 app.use("/product", productRouter);
+app.use("/cart", shoppingCartRouter);
 require("./routes/auth-routes")(app);
 
 if (process.env.NODE_ENV === "production") {

@@ -19,5 +19,5 @@ export { default as farmEquipment } from "./stocks/3.jpg";
 export { default as books } from "./stocks/2.jpg";
 
 // Product
-
+export { default as farming } from "./farming.jpg";
 export { default as product1 } from "./background/product1.jpg";

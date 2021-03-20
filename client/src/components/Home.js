@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import * as IMG from "./img";
+import * as API from "./api/apiActions";
 
-export default class Home extends Component {
+class Home extends Component {
+  state = {
+    name: "",
+    isLoaded: false,
+  };
   productCard = (title, items, image) => {
     return (
       <Link to={`/market/${title}`} class="card" type="button">
@@ -15,7 +21,24 @@ export default class Home extends Component {
       </Link>
     );
   };
+  searchHandler = async () => {
+    if (this.state.name) {
+      const products = await API.findProductByCategoryAndName(this.state.name);
+      this.props.dispatch({ type: "SEARCH_RESULT", payload: { products } });
+      this.setState({
+        isLoaded: true,
+      });
+    }
+  };
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   render() {
+    if (this.state.isLoaded) {
+      return <Redirect to="/market/search result" />;
+    }
     return (
       <div className="home">
         <div
@@ -28,8 +51,12 @@ export default class Home extends Component {
               <p>More than 14,000 products</p>
             </div>
             <div className="hero-search">
-              <input placeholder="What are you looking for?" />
-              <button>
+              <input
+                onChange={this.onChangeHandler}
+                placeholder="What are you looking for?"
+                name="name"
+              />
+              <button onClick={this.searchHandler}>
                 Find <img src={IMG.wSearch} />
               </button>
             </div>
@@ -112,3 +139,9 @@ export default class Home extends Component {
     );
   };
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(Home);

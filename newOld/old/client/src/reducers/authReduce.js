@@ -1,6 +1,6 @@
 const initialState = {
   token: null,
-  user: "",
+  user: { _id: "" },
   isAuth: false,
 };
 

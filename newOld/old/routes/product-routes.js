@@ -13,8 +13,18 @@ router.get("/", async (req, res) => {
 // Add New Product
 router.post("/add", async (req, res) => {
   const product = await new Product(req.body).save();
-  console.log(product);
-  res.send("Hello");
+  res.send(product);
+});
+
+// Get Product by ID
+router.get("/:id", async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  res.send(product);
+});
+
+router.get("/cat/:category", async (req, res) => {
+  const products = await Product.find({ productCategory: req.params.category });
+  res.send(products);
 });
 
 // Update Product
