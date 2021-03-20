@@ -1,0 +1,136 @@
+@media (max-width: 48rem) {
+  .main .login-page .row {
+    .login-col {
+      width: 100%;
+    }
+    .hide-div {
+      display: none;
+    }
+  }
+}
+@media (max-width: 67.5rem) {
+  // .main .login-page .row {
+  //   .login-col {
+  //     width: 100%;
+  //   }
+  // }
+}
+
+.main .login-page {
+  padding: 20px 3% 40px;
+
+  .row {
+    width: 100%;
+    max-width: 900px;
+    background-position: center;
+    background-size: cover;
+    padding: 0px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px #8888888e;
+    overflow: hidden;
+  }
+  .row .login-col {
+    padding: 0px;
+  }
+}
+
+.main .login-page .row .login-form {
+  background-color: rgb(255, 255, 255);
+  min-height: 600px;
+  width: 100%;
+  max-width: 700px;
+  padding: 40px 10%;
+
+  .logo {
+    width: 120px;
+    margin-bottom: 40px;
+    margin-left: -5px;
+  }
+
+  h1 {
+    font-family: $bold;
+    line-height: 30px;
+  }
+
+  .form-group {
+    margin-top: 40px;
+
+    .form-control {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    label {
+      color: $lightTextColot;
+      font-size: 14px;
+    }
+  }
+
+  .forgot {
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    a {
+      text-decoration: none;
+      color: $primaryColor2;
+    }
+  }
+
+  .login-button {
+    margin-top: 10px;
+    width: 100%;
+    button {
+      color: white;
+      width: 100%;
+      background: $primaryColor;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      padding: 8px;
+      &:hover {
+        background-color: white;
+        color: $primaryColor;
+        box-shadow: 2px 2px 8px #88888850;
+      }
+    }
+  }
+
+  .social-login {
+    margin-top: 30px;
+    color: $lightTextColot;
+    text-align: center;
+
+    .line {
+      border-bottom: 1px solid $lightTextColot;
+      margin: 0px 40px;
+      h6 {
+        position: relative;
+        bottom: -10px;
+        background: white;
+        width: 40px;
+        margin: auto;
+      }
+    }
+    img {
+      width: 40px;
+      border: 2px solid $primaryColor2;
+      border-radius: 50%;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 20px;
+    }
+  }
+
+  .checkbox {
+    color: $lightTextColot;
+    margin-top: 40px;
+    font-size: 14px;
+    label a {
+      text-decoration: none;
+      color: $primaryColor2;
+    }
+  }
+}

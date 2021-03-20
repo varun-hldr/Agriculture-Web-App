@@ -1,0 +1,105 @@
+.main .market {
+  background: white;
+  padding: 20px 4% 150px;
+  .market-top .featured {
+    height: 50px;
+    margin-bottom: 20px;
+
+    .featured-products p {
+      font-size: 25px;
+      font-family: $medium;
+      color: $lightTextColot;
+    }
+
+    .total-products p {
+      font-family: $bold;
+      font-size: 13px;
+      line-height: 38px;
+      span {
+        background: rgb(255, 187, 0);
+        color: white;
+        padding: 2px 5px 3px;
+        border-radius: 15px;
+        margin-left: 10px;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 48rem) {
+  .main .market .market-body .products .card {
+    width: 100% !important;
+    max-width: 20rem;
+    img {
+      max-height: 200px !important;
+    }
+  }
+
+  .main .market .market-top {
+    margin-bottom: 40px;
+    .featured {
+      display: block !important;
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.main .market .market-body .products {
+  .card {
+    width: 17rem;
+    text-decoration: none;
+    color: $darkTextColor;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    box-shadow: 0px 1px 8px #0000001e;
+    margin-bottom: 30px;
+
+    img {
+      max-height: 140px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      font-family: $bold;
+      .card-body-top {
+        color: $lightTextColot;
+        font-family: $regular;
+        font-size: 14px;
+        height: 25px;
+        margin-bottom: 10px;
+        .rating {
+          background: $primaryColor2;
+          padding: 3px 7px;
+          color: white;
+          border-radius: 15px;
+        }
+      }
+      .price {
+        font-size: 25px;
+        margin-bottom: 5px;
+      }
+      .name {
+        font-size: 14px;
+      }
+
+      .buy {
+        background: $primaryColor2;
+        width: 150px;
+        padding: 5px;
+        border-radius: 4px;
+        font-family: $regular;
+        margin: auto;
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}

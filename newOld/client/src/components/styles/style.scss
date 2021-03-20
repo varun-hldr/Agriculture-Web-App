@@ -1,0 +1,24 @@
+@import "./variables";
+@import "./navbar";
+@import "./home";
+@import "./loginform";
+@import "./editpopover";
+@import "./footer";
+@import "./market";
+@import "./addproduct";
+@import "./productpage";
+@import "./shoppingcart.scss";
+@import "./successMessage";
+body,
+html,
+#root {
+  background-color: #f8f8f8;
+  height: 100%;
+  font-family: $regular;
+}
+
+.main {
+  min-height: 100%;
+  background-color: $backgroundColor;
+  padding: 0px;
+}
