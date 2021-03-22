@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import EditIcon from "@material-ui/icons/Edit";
 
 const EditPopover = ({ USER, setUpdateUser }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -51,7 +53,7 @@ const EditPopover = ({ USER, setUpdateUser }) => {
         color="default"
         onClick={handleClick}
       >
-        edit
+        <EditIcon />
       </Button>
       <Popover
         id={id}

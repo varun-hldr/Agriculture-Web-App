@@ -96,7 +96,7 @@
         }
         h1 {
           line-height: 0px;
-          font-size: 26px;
+          font-size: 20px;
           font-family: $bold;
         }
       }
@@ -107,6 +107,11 @@
         border-radius: 2px;
         background: $primaryColor2;
         color: white;
+        &:hover {
+          background: white;
+          color: $primaryColor2;
+          box-shadow: 1px 2px 6px #00000048;
+        }
       }
     }
   }

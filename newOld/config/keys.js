@@ -13,6 +13,7 @@ module.exports = {
   mongodb: {
     dbURI:
       "mongodb+srv://varun:varun123@cluster0.q4zuc.mongodb.net/passportjs?retryWrites=true",
+    // "mongodb+srv://gyanwati:gyanwati123@cluster0.q4zuc.mongodb.net/passportjs?retryWrites=true",
   },
   session: {
     cookieKey: "mycookiekey",

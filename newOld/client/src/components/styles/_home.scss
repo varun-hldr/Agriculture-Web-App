@@ -82,9 +82,16 @@
     padding: 8px;
     border-radius: 3px;
     margin-left: 5px;
+    &:hover {
+      box-shadow: 1px 2px 4px #00000048;
+    }
   }
-  .hero-search img {
-    width: 20px;
+  .hero-search {
+    img {
+      width: 19px;
+      position: relative;
+      top: -2px;
+    }
   }
 }
 

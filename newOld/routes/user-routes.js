@@ -10,6 +10,13 @@ router.get("/", verify, async (req, res) => {
   res.send({ alluser });
 });
 
+// Get User by ID
+router.get("/:id", async (req, res) => {
+  const user = await Users.findById(req.params.id);
+  if (!user) return res.send("User Not Found");
+  res.send(user);
+});
+
 // Update User
 router.put("/:id", verify, async (req, res) => {
   const foundUser = await Users.findById(req.params.id);
@@ -21,6 +28,7 @@ router.put("/:id", verify, async (req, res) => {
         email: req.body.email ? req.body.email : foundUser.email,
         role: req.body.role ? req.body.role : foundUser.role,
         status: req.body.status ? req.body.status : foundUser.status,
+        password: req.body.password ? req.body.password : foundUser.password,
       },
     }
   );

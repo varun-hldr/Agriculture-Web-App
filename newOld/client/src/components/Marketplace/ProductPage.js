@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as API from "../api/apiActions";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import * as IMAGE from "../img";
 
 class ProductPage extends Component {
   state = {
@@ -127,6 +128,34 @@ class ProductPage extends Component {
                         Add to cart
                       </button>
                     )}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="product-description">
+              <div className="product-nav">
+                <a className="active">Description</a>
+                <a>Characterstics</a>
+                <a>Experts</a>
+              </div>
+              <div className="main-row">
+                <div className="half-width image">
+                  <img src={productImage[1]} alt={productName} />
+                </div>
+                <div className="half-width description">
+                  <div className="desc">
+                    <h1>{productName}</h1>
+                    <p>{productDescription}</p>
+                  </div>
+                  <div className="posted-by">
+                    <h1>Posted by</h1>
+                    <div className="farmer-details">
+                      <img src={IMAGE.farmerProfile} alt="farmer-profile" />
+                      <div className="farmer-name">
+                        <p>{userName}</p>
+                        <span>Rating 10/8</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as USER from "../api/apiActions";
 import EditPopover from "../Popover/EditPopover";
 
@@ -46,7 +46,14 @@ class adminDashboard extends Component {
     return (
       <tr key={index}>
         <th scope="row">{index}</th>
-        <td>{USER.username}</td>
+        <td>
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to={`/user/${USER._id}`}
+          >
+            {USER.username}
+          </Link>
+        </td>
         <td>{USER.role}</td>
         <td>
           <button type="button" className={style}>

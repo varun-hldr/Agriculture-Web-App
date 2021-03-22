@@ -1,0 +1,36 @@
+.main .main-add-user {
+  padding-top: 20px;
+  h2 {
+    margin-bottom: 40px;
+  }
+  .add-user-button {
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: $primaryColor2;
+    color: white;
+    &:hover {
+      background: white;
+      color: $primaryColor2;
+      box-shadow: 1px 2px 6px #00000048;
+    }
+  }
+  .add-user {
+    background: white;
+    padding: 20px 3% 50px;
+    max-width: 500px;
+    height: 600px;
+    margin: auto;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      height: 30px;
+    }
+    .add-user-div {
+      border-bottom: 2px solid $primaryColor2;
+      margin-bottom: 30px;
+    }
+  }
+}
