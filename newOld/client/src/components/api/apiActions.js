@@ -123,6 +123,15 @@ export async function getProductByCategory(category) {
   return data;
 }
 
+export async function findProductByCategoryAndName(name) {
+  let data = await publicFetch
+    .get(`product/find/${name}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+
 // Shopping Cart
 export async function addProductOnCart(product) {
   let data = await publicFetch

@@ -5,10 +5,10 @@ const Product = require("../models/product-model");
 const verify = require("../verifyToken");
 
 // Get All Product
-router.get("/", async (req, res) => {
-  const alluser = await Product.find();
-  res.send({ alluser });
-});
+// router.get("/", async (req, res) => {
+//   const alluser = await Product.find();
+//   res.send({ alluser });
+// });
 
 // Add New Product
 router.post("/add", async (req, res) => {
@@ -24,6 +24,20 @@ router.get("/:id", async (req, res) => {
 
 router.get("/cat/:category", async (req, res) => {
   const products = await Product.find({ productCategory: req.params.category });
+  res.send(products);
+});
+
+router.get("/find/:name", async (req, res) => {
+  let products = [];
+  const AllProduct = await Product.find();
+  AllProduct.forEach((product) => {
+    if (
+      product.productName.toLowerCase().includes(req.params.name.toLowerCase())
+    ) {
+      products.push(product);
+    }
+  });
+
   res.send(products);
 });
 

@@ -21,3 +21,6 @@ export { default as books } from "./stocks/2.jpg";
 // Product
 export { default as farming } from "./farming.jpg";
 export { default as product1 } from "./background/product1.jpg";
+
+// Farmer Profile
+export { default as farmerProfile } from "./profile/farmer-profile.jpg";

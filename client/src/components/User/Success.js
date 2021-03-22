@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import * as IMAGE from "../img";
 
-export default class SeccessMessage extends Component {
+export default class Seccess extends Component {
   render() {
     return (
       <div className="success-message">
@@ -10,11 +11,11 @@ export default class SeccessMessage extends Component {
         </div>
         <div className="text">
           <h1>Yay!</h1>
-          <p>Your file has been uploaded.</p>
+          <p>Your profile has been successfully updated.</p>
         </div>
-        <button onClick={this.props.addMoreHandler} className="button">
-          Add More
-        </button>
+        <Link to="/">
+          <button className="button">Home</button>
+        </Link>
       </div>
     );
   }

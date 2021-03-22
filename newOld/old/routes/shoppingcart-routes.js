@@ -5,10 +5,10 @@ const CART = require("../models/shoppingcart-model");
 const verify = require("../verifyToken");
 
 // Get All Product
-router.get("/", async (req, res) => {
-  const alluser = await CART.find();
-  res.send({ alluser });
-});
+// router.get("/", async (req, res) => {
+//   const alluser = await CART.find();
+//   res.send({ alluser });
+// });
 
 // Add New Product on Cart
 router.post("/add/:id", async (req, res) => {

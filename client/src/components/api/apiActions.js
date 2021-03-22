@@ -66,6 +66,14 @@ export async function allUser(token) {
 
   return data;
 }
+export async function getUserById(id) {
+  let data = await publicFetch
+    .get(`users/${id}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
 
 export async function updateUser({ id, user, token }) {
   let data = await publicFetch

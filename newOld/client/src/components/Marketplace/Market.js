@@ -1,22 +1,47 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as API from "../api/apiActions";
 
-export default class Market extends Component {
+class Market extends Component {
   state = {
     products: [],
     isLoaded: false,
+    name: "",
+    message: "Loading...",
   };
   async componentDidMount() {
-    const products = await API.getProductByCategory(
-      this.props.match.params.name
-    );
-    if (products) {
-      this.setState({ products, isLoaded: true });
+    if (
+      this.props.match.params.name === "search result" &&
+      this.props.user.products.isLoaded
+    ) {
+      if (this.props.user.products.data.length !== 0) {
+        this.setState({
+          products: this.props.user.products.data,
+          isLoaded: true,
+          name: this.props.match.params.name,
+        });
+      } else {
+        this.setState({
+          message: "Sorry! No product found",
+        });
+      }
+    } else {
+      const products = await API.getProductByCategory(
+        this.props.match.params.name
+      );
+      if (products) {
+        this.setState({
+          products,
+          isLoaded: true,
+          name: this.props.match.params.name,
+        });
+      }
     }
   }
 
   render() {
+    // console.log(this.props.user.products.isLoaded);
     return (
       <div className="market">
         <div className="market-top">
@@ -25,10 +50,12 @@ export default class Market extends Component {
               <p>Featured Products</p>
             </div>
             <div className="total-products">
-              <p>
-                Total in {this.props.match.params.name}{" "}
-                <span>{this.state.products.length}</span>
-              </p>
+              {this.state.name ? (
+                <p>
+                  Total in {this.state.name}{" "}
+                  <span>{this.state.products.length}</span>
+                </p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -40,7 +67,7 @@ export default class Market extends Component {
               )}
             </div>
           ) : (
-            "Loading..."
+            <h3>{this.state.message}</h3>
           )}
         </div>
       </div>
@@ -85,3 +112,9 @@ export default class Market extends Component {
     );
   };
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(Market);

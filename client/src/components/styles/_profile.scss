@@ -1,0 +1,68 @@
+.main .profile {
+  padding-top: 20px;
+  .profile-body {
+    background: white;
+    padding: 20px 3% 50px;
+    max-width: 500px;
+    height: 600px;
+    margin: auto;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      height: 30px;
+    }
+    .username,
+    .email,
+    .role,
+    .status,
+    .password,
+    .confirm-password {
+      border-bottom: 2px solid $primaryColor2;
+      margin-bottom: 30px;
+    }
+    .update-profile,
+    .change-profile {
+      button {
+        width: 150px;
+        height: 40px;
+        border: none;
+        outline: none;
+        background: $primaryColor2;
+        color: white;
+        &:hover {
+          background: white;
+          color: $primaryColor2;
+          box-shadow: 1px 2px 6px #00000048;
+        }
+      }
+    }
+    .success-message {
+      text-align: center;
+      .image {
+        img {
+          width: 70%;
+        }
+      }
+      .text {
+        margin-bottom: 40px;
+        h1 {
+          font-size: 40px;
+          padding: 0px;
+        }
+        p {
+          font-size: 25px;
+        }
+      }
+      .button {
+        padding: 10px 40px;
+        background: $primaryColor;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}

@@ -50,6 +50,7 @@ class Routing extends Component {
             />
             <Route path="/login" component={Layout.Login} />
             <Route path="/signup" component={Layout.Signup} />
+            <Route path="/user/:id" component={Layout.Profile} />
 
             <Route path="/market/:name" component={Layout.Market} />
             <Route path="/add-product" component={Layout.AddProduct} />
