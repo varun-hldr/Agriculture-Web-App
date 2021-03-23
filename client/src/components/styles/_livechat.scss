@@ -1,0 +1,134 @@
+.main .outerContainer {
+  padding: 20px 2% 10px;
+  .innercontainer {
+    border-radius: 13px 13px 0px 0px;
+    overflow: hidden;
+    background: white;
+    max-width: 800px;
+    margin: auto;
+  }
+  .infoBar {
+    background: $darkTextColor;
+    color: $navColor;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    .leftInnerContainer {
+      display: flex;
+      img {
+        width: 7px;
+        height: 7px;
+        margin-right: 10px;
+      }
+    }
+    .rightInnerContainer {
+      text-align: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: $navColor;
+      a {
+        position: relative;
+        top: -2px;
+        font-family: $medium;
+        text-decoration: none;
+        color: $darkTextColor;
+        font-size: 20px;
+        line-height: 0px;
+      }
+    }
+  }
+  .messages {
+    min-height: 65vh;
+    padding-top: 10px;
+    .message-box {
+      .messageBox {
+        padding: 5px 20px;
+        color: white;
+        display: inline-block;
+        max-width: 80%;
+      }
+
+      .messageText {
+        width: 100%;
+        letter-spacing: 0;
+        float: left;
+        font-size: 1.1em;
+        word-wrap: break-word;
+        margin: 0px;
+      }
+
+      .messageText img {
+        vertical-align: middle;
+      }
+
+      .messageContainer {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 2%;
+        margin-top: 3px;
+      }
+
+      .sentText {
+        display: flex;
+        align-items: center;
+        text-transform: lowercase;
+        color: #828282;
+        letter-spacing: 0.3px;
+        font-size: 15px;
+      }
+
+      .pl-10 {
+        padding-left: 10px;
+      }
+
+      .pr-10 {
+        padding-right: 10px;
+      }
+
+      .justifyStart {
+        justify-content: flex-start;
+      }
+
+      .justifyEnd {
+        justify-content: flex-end;
+      }
+
+      .colorWhite {
+        color: white;
+      }
+
+      .colorDark {
+        color: white;
+      }
+
+      .backgroundBlue {
+        background: $primaryColor;
+        border-radius: 20px 0px 20px 20px;
+      }
+
+      .backgroundLight {
+        background: $darkTextColor;
+        border-radius: 0px 20px 20px;
+      }
+    }
+  }
+  .form {
+    display: flex;
+    border-top: 2px solid $primaryColor2;
+    .input {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding-left: 20px;
+    }
+    .sendButton {
+      width: 140px;
+      height: 50px;
+      border: none;
+      outline: none;
+      color: $navColor;
+      background: $darkTextColor;
+    }
+  }
+}

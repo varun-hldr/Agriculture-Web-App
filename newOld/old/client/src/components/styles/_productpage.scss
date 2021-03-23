@@ -11,6 +11,8 @@
 }
 
 .main .product-page .product {
+  max-width: 1200px;
+  margin: 0 auto;
   .breadcum {
     padding-left: 3%;
     font-size: 14px;
@@ -57,7 +59,7 @@
         .mycol-10 {
           overflow: hidden;
           width: 100%;
-          padding: 0px 17px 17px;
+          padding: 0px 1% 1%;
           .featured {
             img {
               width: 100%;
@@ -121,6 +123,11 @@
           border-radius: 2px;
           padding: 10px;
           text-transform: none;
+          &:hover {
+            background: white;
+            color: $primaryColor2;
+            box-shadow: 1px 2px 6px #00000048;
+          }
         }
       }
       .items {
@@ -144,6 +151,123 @@
             color: white;
             border: none;
             outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Product Description
+@media (max-width: 48rem) {
+  .main .product-page .product .product-description {
+    .main-row {
+      display: inline !important;
+      .half-width {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+.main .product-page .product .product-description {
+  margin-top: 50px;
+  // padding-left: 2%;
+  .product-nav {
+    max-width: 400px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    font-family: $bold;
+    color: $lightTextColot;
+    font-size: 14px;
+    padding-bottom: 30px;
+    a {
+      background: rgba(255, 187, 0, 0.123);
+      padding: 2px 2% 3px;
+      border-radius: 15px;
+      text-decoration: none;
+      &:hover {
+        background: rgb(255, 187, 0);
+        color: white;
+      }
+    }
+    .active {
+      background: rgb(255, 187, 0);
+      color: white;
+      padding: 2px 2% 3px;
+      border-radius: 15px;
+    }
+  }
+  .main-row {
+    display: flex;
+    .half-width {
+      width: 50%;
+      height: 500px;
+    }
+    .image {
+      display: flex;
+      justify-content: center;
+      background: white;
+      padding: 5%;
+      img {
+        width: 100%;
+        height: 400px;
+        max-width: 450px;
+        object-fit: cover;
+        border-radius: 5px 25px 5px 5px;
+      }
+    }
+    .description {
+      padding: 2% 5%;
+
+      .desc {
+        // height: 70%;
+        min-height: 30%;
+        h1 {
+          font-family: $bold;
+          font-size: 30px;
+          padding-bottom: 10px;
+        }
+        p {
+          width: 100%;
+          max-height: 250px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      .posted-by {
+        // height: 25%;
+        margin-top: 20px;
+
+        h1 {
+          font-size: 20px;
+          font-family: $bold;
+        }
+        .farmer-details {
+          display: flex;
+          height: 100px;
+          img {
+            width: 100px;
+            height: 100px;
+            object-fit: fill;
+            border-radius: 50%;
+          }
+        }
+        .farmer-name {
+          padding: 10px 30px;
+          width: 200px;
+          p {
+            padding-top: 5px;
+            height: 30px;
+            font-size: 20px;
+            font-family: $medium;
+          }
+          span {
+            background: rgb(255, 187, 0);
+            color: white;
+            padding: 2px 5% 3px;
+            border-radius: 15px;
           }
         }
       }
