@@ -5,6 +5,7 @@
     overflow: hidden;
     max-width: 800px;
     margin: auto;
+    padding-bottom: 40px;
   }
   .infoBar {
     background: $darkTextColor;
@@ -44,8 +45,8 @@
     background: white;
     overflow: scroll;
     overflow-x: hidden;
-    min-height: 50vh;
-    height: 55vh;
+    min-height: 45vh;
+    height: 60vh;
     padding: 10px 0px;
     .message-box {
       .messageBox {
