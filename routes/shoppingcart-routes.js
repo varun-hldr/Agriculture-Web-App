@@ -4,6 +4,27 @@ const CART = require("../models/shoppingcart-model");
 // Verify Token
 const verify = require("../verifyToken");
 
+// Payment Configration
+const Razorpay = require("razorpay");
+
+const instance = new Razorpay({
+  key_id: "rzp_test_xk1pmd7sXsGx3L",
+  key_secret: "kDgBuTpx3SIMQ5WEbd5RvNju",
+});
+
+router.get("/order/:amount", async (req, res) => {
+  // Generate order id
+  let receiptId = Math.random().toString(36).substring(12);
+
+  var options = {
+    amount: req.params.amount,
+    currency: "INR",
+    receipt: "order_" + receiptId,
+  };
+  const ordrId = await instance.orders.create(options);
+  res.send(ordrId);
+});
+
 // Get All Product
 // router.get("/", async (req, res) => {
 //   const alluser = await CART.find();

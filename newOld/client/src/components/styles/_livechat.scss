@@ -1,8 +1,9 @@
 .main .outerContainer {
-  padding: 20px 2%;
+  padding: 20px 2% 10px;
   .innercontainer {
     border-radius: 13px 13px 0px 0px;
     overflow: hidden;
+    background: white;
     max-width: 800px;
     margin: auto;
   }
@@ -37,16 +38,9 @@
       }
     }
   }
-  // .messages::-webkit-scrollbar {
-  //   display: none;
-  // }
   .messages {
-    background: white;
-    overflow: scroll;
-    overflow-x: hidden;
-    min-height: 50vh;
-    height: 55vh;
-    padding: 10px 0px;
+    min-height: 65vh;
+    padding-top: 10px;
     .message-box {
       .messageBox {
         padding: 5px 20px;

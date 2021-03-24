@@ -61,6 +61,11 @@ const Navbar = (props) => {
                   </Link>
                 </li>
                 <li>
+                  <Link className="dropdown-item" to="/support/chat">
+                    Get Support
+                  </Link>
+                </li>
+                <li>
                   <a className="dropdown-item logout" href="/auth/logout">
                     Logout
                   </a>

@@ -1,0 +1,30 @@
+.main .admin-dashboard {
+  padding: 20px 2% 50px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: $medium;
+  .table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 550px;
+  }
+  .pagination {
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    button {
+      border-radius: 3px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      outline: none;
+      margin-right: 10px;
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+}

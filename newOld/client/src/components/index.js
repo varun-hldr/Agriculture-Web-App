@@ -13,3 +13,6 @@ export { default as Market } from "./Marketplace/Market";
 export { default as AddProduct } from "./Marketplace/AddProduct";
 export { default as ProductPage } from "./Marketplace/ProductPage";
 export { default as Cart } from "./Marketplace/Cart";
+
+// Live Chat (Socket)
+export { default as Chat } from "./Livechat/Chat/Chat";

@@ -166,3 +166,12 @@ export async function deleteProductFromCart(id) {
 
   return data;
 }
+
+// Setup Payment (Make Order Request)
+export async function createOrder(amount) {
+  let data = await publicFetch
+    .get(`cart/order/${amount}`)
+    .then((response) => response.data)
+    .catch(() => false);
+  return data;
+}
