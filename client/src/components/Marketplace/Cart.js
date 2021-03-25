@@ -8,37 +8,79 @@ class Cart extends Component {
     products: [],
     totalPrice: 0,
     isLoaded: false,
+    check: false,
   };
 
   // Razorpay Payment Integration
   openPopup = async (e) => {
     e.preventDefault();
-    // create order
-    const order = await API.createOrder(this.state.totalPrice);
-    var options = {
-      key: "rzp_test_xk1pmd7sXsGx3L", // Enter the Key ID generated from the Dashboard
-      amount: this.state.totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: "INR",
-      name: "Agribazzar",
-      description: "Test Transaction",
-      // "image": "https://example.com/your_logo",
-      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.on("payment.failed", function (response) {
-      alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+
+    if (this.props.auth.isAuth) {
+      const { products, totalPrice } = this.state;
+      const id = this.props.auth.user._id.substring(0, 10);
+      // create order
+      const { amount, id: order_id, currency, error } = await API.createOrder(
+        totalPrice
+      );
+      if (error) {
+        alert(error.description);
+      } else {
+        // Getting the order details back
+        var options = {
+          key: "rzp_test_xk1pmd7sXsGx3L",
+          amount: amount.toString(),
+          currency: currency,
+          name: "Agribazzar",
+          description: "Test Transaction",
+          order_id: order_id,
+          theme: {
+            color: "#3399cc",
+          },
+          handler: async (response) => {
+            const orderData = {
+              orderCreationId: order_id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpayOrderId: response.razorpay_order_id,
+              razorpaySignature: response.razorpay_signature,
+            };
+            const data = { orderData, products, id };
+            const { error, msg, orderId, paymentId } = await API.onOrderSuccess(
+              data
+            );
+            if (error) {
+              alert(error);
+            } else {
+              this.setCheckHandler(true);
+            }
+          },
+          prefill: {
+            name: "Varun",
+            email: "varun@agribazzar.com",
+            contact: "9999999999",
+          },
+          notes: {
+            address: "Agribazzar Corporate Office",
+          },
+        };
+        const rzp1 = new window.Razorpay(options);
+        rzp1.on("payment.failed", function (response) {
+          alert(response.error.code);
+          alert(response.error.description);
+          alert(response.error.source);
+          alert(response.error.step);
+          alert(response.error.reason);
+          alert(response.error.metadata.order_id);
+          alert(response.error.metadata.payment_id);
+        });
+        rzp1.open();
+      }
+    }
+  };
+
+  setCheckHandler = (check) => {
+    this.setState({
+      check,
     });
-    rzp1.open();
   };
 
   setTotalPrice = (cart) => {
@@ -78,7 +120,9 @@ class Cart extends Component {
     if (!this.props.auth.isAuth) {
       return <Redirect to="/login" />;
     }
-
+    if (this.state.check) {
+      return <Redirect to="/orders" />;
+    }
     return (
       <div className="shopping-cart">
         <div className="cart-top">

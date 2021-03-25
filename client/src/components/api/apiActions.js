@@ -115,7 +115,7 @@ export async function addProduct(product) {
 
 export async function getProductById(id) {
   let data = await publicFetch
-    .get(`product/${id}`)
+    .get(`product/by/${id}`)
     .then((response) => response.data)
     .catch(() => false);
 
@@ -173,5 +173,21 @@ export async function createOrder(amount) {
     .get(`cart/order/${amount}`)
     .then((response) => response.data)
     .catch(() => false);
+  return data;
+}
+export async function onOrderSuccess(result) {
+  let data = await publicFetch
+    .post(`cart/order/success`, result)
+    .then((response) => response.data)
+    .catch(() => false);
+  return data;
+}
+
+export async function findOrdersByID(id) {
+  let data = await publicFetch
+    .get(`users/orders/${id}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
   return data;
 }

@@ -17,7 +17,7 @@ router.post("/add", async (req, res) => {
 });
 
 // Get Product by ID
-router.get("/:id", async (req, res) => {
+router.get("/by/:id", async (req, res) => {
   const product = await Product.findById(req.params.id);
   res.send(product);
 });

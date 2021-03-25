@@ -18,7 +18,7 @@ module.exports = {
   session: {
     cookieKey: "mycookiekey",
   },
-  // CLIENT_HOME_PAGE_URL: "http://localhost:3000/",
-  CLIENT_HOME_PAGE_URL: "https://agribazzar.herokuapp.com/",
+  CLIENT_HOME_PAGE_URL: "http://localhost:3000/",
+  // CLIENT_HOME_PAGE_URL: "https://agribazzar.herokuapp.com/",
   token: { TOKEN_SECRET: "myTokenSecret" },
 };

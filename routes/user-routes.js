@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Users = require("../models/user-model");
+const USERORDERS = require("../models/userOrders-model");
 
 // Verify Token
 const verify = require("../verifyToken");
@@ -15,6 +16,12 @@ router.get("/:id", async (req, res) => {
   const user = await Users.findById(req.params.id);
   if (!user) return res.send("User Not Found");
   res.send(user);
+});
+
+// Find all users by Id
+router.get("/orders/:id", async (req, res) => {
+  const orders = await USERORDERS.find({ cartId: req.params.id });
+  res.send(orders);
 });
 
 // Update User

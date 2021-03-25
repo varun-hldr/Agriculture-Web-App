@@ -10,6 +10,37 @@ class Cart extends Component {
     isLoaded: false,
   };
 
+  // Razorpay Payment Integration
+  openPopup = async (e) => {
+    e.preventDefault();
+    // create order
+    const order = await API.createOrder(this.state.totalPrice);
+    var options = {
+      key: "rzp_test_xk1pmd7sXsGx3L", // Enter the Key ID generated from the Dashboard
+      amount: this.state.totalPrice, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "Agribazzar",
+      description: "Test Transaction",
+      // "image": "https://example.com/your_logo",
+      order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      // "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+    rzp1.open();
+  };
+
   setTotalPrice = (cart) => {
     let totalPrice = 0;
     cart.map((product) => {
@@ -72,7 +103,13 @@ class Cart extends Component {
               <p>Total</p>
               <h1>Rs.{this.state.totalPrice}</h1>
             </div>
-            <button className="place-order">PLACE ORDER</button>
+            <button
+              id="rzp-button1"
+              onClick={(e) => this.openPopup(e)}
+              className="place-order"
+            >
+              PLACE ORDER
+            </button>
           </div>
         </div>
       </div>
