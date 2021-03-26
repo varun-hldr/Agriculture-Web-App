@@ -57,6 +57,7 @@ class Routing extends Component {
             <Route path="/product/:name" component={Layout.ProductPage} />
             <Route path="/cart" component={Layout.Cart} />
             <Route path="/orders" component={Layout.Orders} />
+            <Route path="/all-products" component={Layout.AllProducts} />
 
             <Route path="/support/chat" component={Layout.Chat} />
           </Switch>

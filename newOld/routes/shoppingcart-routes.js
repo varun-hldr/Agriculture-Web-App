@@ -1,28 +1,83 @@
 const router = require("express").Router();
 const CART = require("../models/shoppingcart-model");
+const USERORDERS = require("../models/userOrders-model");
+const crypto = require("crypto");
+const Razorpay = require("razorpay");
 
 // Verify Token
 const verify = require("../verifyToken");
 
 // Payment Configration
-const Razorpay = require("razorpay");
-
-const instance = new Razorpay({
-  key_id: "rzp_test_xk1pmd7sXsGx3L",
-  key_secret: "kDgBuTpx3SIMQ5WEbd5RvNju",
-});
 
 router.get("/order/:amount", async (req, res) => {
-  // Generate order id
-  let receiptId = Math.random().toString(36).substring(12);
+  try {
+    const instance = new Razorpay({
+      key_id: "rzp_test_xk1pmd7sXsGx3L",
+      key_secret: "kDgBuTpx3SIMQ5WEbd5RvNju",
+    });
 
-  var options = {
-    amount: req.params.amount,
-    currency: "INR",
-    receipt: "order_" + receiptId,
-  };
-  const ordrId = await instance.orders.create(options);
-  res.send(ordrId);
+    // Generate order id
+    let receiptId = Math.random().toString(36).substring(12);
+
+    var options = {
+      amount: parseInt(req.params.amount) * 100,
+      currency: "INR",
+      receipt: "order_" + receiptId,
+    };
+    const order = await instance.orders.create(options);
+    if (!order)
+      return res.send({ error: { description: "Some error occured" } });
+    res.send(order);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+// On Order Success
+router.post("/order/success", async (req, res) => {
+  try {
+    // getting the details back from our font-end
+
+    const { orderData, products, id } = req.body;
+
+    const {
+      orderCreationId,
+      razorpayPaymentId,
+      razorpayOrderId,
+      razorpaySignature,
+    } = orderData;
+
+    // Creating our own digest
+    // The format should be like this:
+    // digest = hmac_sha256(orderCreationId + "|" + razorpayPaymentId, secret);
+    const shasum = crypto.createHmac("sha256", "kDgBuTpx3SIMQ5WEbd5RvNju");
+
+    shasum.update(`${orderCreationId}|${razorpayPaymentId}`);
+
+    const digest = shasum.digest("hex");
+
+    // comaparing our digest with the actual signature
+    if (digest !== razorpaySignature)
+      return res.send({ error: "Transaction not legit!" });
+
+    // THE PAYMENT IS LEGIT & VERIFIED
+    // YOU CAN SAVE THE DETAILS IN YOUR DATABASE IF YOU WANT
+
+    // Adding cart data to User Order
+    await products.forEach((product) => delete product._id);
+    await USERORDERS.insertMany(products);
+
+    // Removing data from cart
+    await CART.deleteMany({ cartId: id });
+
+    res.send({
+      msg: "success",
+      orderId: razorpayOrderId,
+      paymentId: razorpayPaymentId,
+    });
+  } catch (error) {
+    res.send({ error: "failed" });
+  }
 });
 
 // Get All Product

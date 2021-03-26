@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import * as USER from "../api/apiActions";
-import EditPopover from "../Popover/EditPopover";
+import * as USER from "../../api/apiActions";
+import EditPopover from "../../Popover/EditPopover";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-class adminDashboard extends Component {
+class Users extends Component {
   state = {
     users: null,
     page: [],
@@ -115,7 +115,7 @@ class adminDashboard extends Component {
     }
 
     return (
-      <div className="admin-dashboard">
+      <React.Fragment>
         {this.state.users !== null ? (
           <React.Fragment>
             <table className="table text-center table-borderless">
@@ -149,7 +149,7 @@ class adminDashboard extends Component {
         ) : (
           <h3>Loading...</h3>
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -158,4 +158,4 @@ function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps)(adminDashboard);
+export default connect(mapStateToProps)(Users);

@@ -5,10 +5,10 @@ const Product = require("../models/product-model");
 const verify = require("../verifyToken");
 
 // Get All Product
-// router.get("/", async (req, res) => {
-//   const alluser = await Product.find();
-//   res.send({ alluser });
-// });
+router.get("/allProducts", async (req, res) => {
+  const products = await Product.find();
+  res.send(products);
+});
 
 // Add New Product
 router.post("/add", async (req, res) => {
@@ -59,10 +59,10 @@ router.put("/:id", verify, async (req, res) => {
 });
 
 // Delete User
-router.delete("/:id", verify, async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   const user = await Product.deleteOne({ _id: req.params.id });
   if (!user) return res.send("invalid Id");
-  res.send({ user });
+  res.send(user);
 });
 
 module.exports = router;

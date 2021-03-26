@@ -9,39 +9,111 @@ class Market extends Component {
     isLoaded: false,
     name: "",
     message: "Loading...",
+    page: [],
+    number: 8,
+    length: 0,
   };
+
+  setUsersHandler = (page, number) => {
+    const start = (page - 1) * number;
+    const end = page * number;
+    const products = this.props.user.products.data.slice([start], [end]);
+    this.setState({
+      products,
+    });
+  };
+
+  makePages = (alluser, number) => {
+    function isInt(n) {
+      return n % 1 === 0;
+    }
+    const page = [];
+    let length = 0;
+    if (isInt(alluser.length / number)) {
+      length = alluser.length / number;
+    } else {
+      length = alluser.length / number + 1;
+    }
+    for (var i = 1; i <= length; i++) {
+      page.push(i);
+    }
+    return page;
+  };
+
+  dispatchProducts = async () => {
+    const products = await API.getProductByCategory(
+      this.props.match.params.name
+    );
+    if (products) {
+      await this.props.dispatch({
+        type: "SEARCH_RESULT",
+        payload: { products },
+      });
+    }
+    return products;
+  };
+
   async componentDidMount() {
-    if (
-      this.props.match.params.name === "search result" &&
-      this.props.user.products.isLoaded
-    ) {
-      if (this.props.user.products.data.length !== 0) {
-        this.setState({
-          products: this.props.user.products.data,
-          isLoaded: true,
-          name: this.props.match.params.name,
-        });
+    let products = [];
+    if (this.props.match.params.name === "search result") {
+      if (this.props.user.products.isLoaded) {
+        products = this.props.user.products.data;
       } else {
-        this.setState({
-          message: "Sorry! No product found",
-        });
+        products = null;
       }
     } else {
-      const products = await API.getProductByCategory(
-        this.props.match.params.name
-      );
-      if (products) {
-        this.setState({
-          products,
-          isLoaded: true,
-          name: this.props.match.params.name,
-        });
-      }
+      products = await this.dispatchProducts();
     }
+
+    if (products) {
+      this.setState({
+        products: products.slice([0], [this.state.number]),
+        isLoaded: true,
+        name: this.props.match.params.name,
+        page: this.makePages(products, this.state.number),
+        length: products.length,
+      });
+    } else {
+      this.setState({
+        message: "Sorry! No product found",
+      });
+    }
+
+    // if (
+    //   this.props.match.params.name === "search result" &&
+    //   this.props.user.products.isLoaded
+    // ) {
+    //   if (this.props.user.products.data.length !== 0) {
+    //     const { data } = this.props.user.products;
+    //     this.setState({
+    //       products: data.slice([0], [this.state.number]),
+    //       isLoaded: true,
+    //       name: this.props.match.params.name,
+    //       page: this.makePages(data, this.state.number),
+    //       length: data.length,
+    //     });
+    //   } else {
+    //     this.setState({
+    //       message: "Sorry! No product found",
+    //     });
+    //   }
+    // } else {
+    //   const products = await API.getProductByCategory(
+    //     this.props.match.params.name
+    //   );
+    //   if (products) {
+    //     this.setState({
+    //       products: products.slice([0], [this.state.number]),
+    //       isLoaded: true,
+    //       name: this.props.match.params.name,
+    //       page: this.makePages(products, this.state.number),
+    //       length: products.length,
+    //     });
+    //   }
+    // }
   }
 
   render() {
-    // console.log(this.props.user.products.isLoaded);
     return (
       <div className="market">
         <div className="market-top">
@@ -52,8 +124,7 @@ class Market extends Component {
             <div className="total-products">
               {this.state.name ? (
                 <p>
-                  Total in {this.state.name}{" "}
-                  <span>{this.state.products.length}</span>
+                  Total in {this.state.name} <span>{this.state.length}</span>
                 </p>
               ) : null}
             </div>
@@ -69,6 +140,16 @@ class Market extends Component {
           ) : (
             <h3>{this.state.message}</h3>
           )}
+        </div>
+        <div className="pagination">
+          {this.state.page.map((page) => (
+            <button
+              onClick={() => this.setUsersHandler(page, this.state.number)}
+              className="page"
+            >
+              {page}
+            </button>
+          ))}
         </div>
       </div>
     );

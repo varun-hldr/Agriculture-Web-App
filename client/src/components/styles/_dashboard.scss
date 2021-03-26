@@ -3,11 +3,68 @@
   max-width: 1200px;
   margin: auto;
   font-family: $medium;
+  .dashboard-header {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+    button {
+      width: 120px;
+      height: 35px;
+      border: none;
+      outline: none;
+      background: #212529;
+      color: white;
+      margin-right: 5px;
+      border-radius: 3px;
+      &:hover {
+        background: white;
+        color: #212529;
+        box-shadow: 1px 2px 4px #00000048;
+      }
+    }
+  }
+  .all-products {
+    .order-product {
+      background: white;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+      padding: 5px 2%;
+
+      .delete-btn {
+        border: none;
+        outline: none;
+        background: transparent;
+      }
+
+      .image {
+        img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .title {
+        max-width: 750px;
+        margin: auto 0px;
+      }
+
+      .order-price {
+        width: 105px;
+        margin: auto 0px;
+        h1 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
   .table {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    min-height: 550px;
+    // max-height: 500px;
   }
   .pagination {
     margin: 0 auto;

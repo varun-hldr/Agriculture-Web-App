@@ -121,6 +121,14 @@ export async function getProductById(id) {
 
   return data;
 }
+export async function getAllProducts() {
+  let data = await publicFetch
+    .get(`product/allProducts`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
 
 export async function getProductByCategory(category) {
   let data = await publicFetch
@@ -134,6 +142,15 @@ export async function getProductByCategory(category) {
 export async function findProductByCategoryAndName(name) {
   let data = await publicFetch
     .get(`product/find/${name}`)
+    .then((response) => response.data)
+    .catch(() => false);
+
+  return data;
+}
+
+export async function deleteProductById(id) {
+  let data = await publicFetch
+    .delete(`product/delete/${id}`)
     .then((response) => response.data)
     .catch(() => false);
 
