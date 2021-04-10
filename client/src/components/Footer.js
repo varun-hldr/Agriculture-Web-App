@@ -10,13 +10,6 @@ const Footer = () => {
           <a href="https://github.com/varun-hldr" className="link-light">
             Varun
           </a>
-          {" & "}
-          <a
-            href="https://github.com/gyanwati-kumari-au9"
-            className="link-light"
-          >
-            Gyanwati
-          </a>
         </p>
       </div>
     </footer>
